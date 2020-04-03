@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ5rt4_6lwR_0fkENYk8i4QF83Z0NJNb4&callback=initMap"></script>
+
+
+
+  
+  
+
+  <title>DLI Calculator Web App</title>
+
+
+</head>
+<body>
+  <body>
+   
+    <div class="container" >
+      <br> <br> <br> 
+      
+      <p style="font-size:1.7vw;" align = "left"><strong><u>What is DLI ?</u></strong>   DLI stands for Daily Light Integral. 
+        It is the measurement of the total amount of light that falls in a certain location. Knowing the DLI is important in determining
+         if there is sufficient natural light for your crops or if supplemental light is required for your greenhouse operation. </p>
+  
+     <p style="font-size:1.7vw;" align="left"><strong><u>How it works ?</u></strong> First, choose the DLI reading you want from the 
+      drop-down menu.  Then fill in the address, zip code or city name where your farm/ greenhouse is located and hit ENTER.  
+      Review the map to make sure the location is correct. Then, use the table below which displays the daily DLI readings by month.</p>
+    
+      <p style="font-size:1.7vw;" align = "left"><strong><u>How much light do my crops need? </u></strong> 
+        The amount of light that your crops need varies by the type of crop. </p>
+        <p style="font-size:1.7vw;" align = "center"> <strong> Microgreens: 12 mol / m<sup>2</sup> / day  |  Leafy Greens, Herbs: 16-19 mol / m<sup>2</sup>  / day </strong> </p>
+  
+          <p style="font-size:1.7vw;" align = "center"> <strong>  Strawberries: 20-24 mol / m<sup>2</sup> / day | Tomatoes, Peppers & Cucumbers: 24-28 mol / m<sup>2</sup>  / day </strong> </p>
+          <p style="font-size:1.7vw;">The DLI calculator was created by Agritecture Software Engineer Intern Almazhan Abdukhat. </p> 
+          <p style="font-size:1.7vw;"> The theory behind the calculations is available <a href="http://www.fao.org/3/x0490e/x0490e07.htm#radiation">here</a>.
+            The Source on github is available <a href="https://github.com/almazhanabdukhat/Agritecture-s-Daily-Light-Integral-Calculator-2020">here</a> . </p>
+            <p style="font-size:1.7vw;">  For questions regarding the functionality of the calculator, please reach out to <a href="https://www.agritecture.com/david-ceaser">Agritecture Lead Agronomist David Ceaser</a>.</p>
+      
+  
+      <div class="panel" id = "calculator">
+      <br>
+      
+      <fieldset>
+
+        
+      
+        <form id="location-form">
+
+        
+        
+
+        
+        <h2 class="text-center" style="font-size:3.3vw;"> <strong>Daily Light Integral & Geolocation calculator</strong> </h2>
+        <br>
+        <h5 style="font-size:2.3vw;"> Please choose the desired DLI reading:</h5>
+         <select id="opList" style="font-size:2.2vw;" onChange="handleClick()" >
+            <option value = ""> </option>
+           <option value = "OutNoC">Outdoors, cloudless sky </option>
+           <option value = "OutC">Outdoors, cloudy day </option>
+           <option value = "GrSun">Inside greenhouse at plant canopy, sunny day, clear sky </option>
+           <option value = "GrCl"> Inside greenhouse at plant canopy, cloudy day</option>
+           </select>
+          <br> <br>
+        
+
+        <h5 style="font-size:2.3vw;"> Please enter your address (street, city, region, country):</h5>
+
+        <input type="text" style="font-size:2.3vw;" id="location-input" placeholder="310 3rd Avenue, New York, NY, USA" class="form-control form-control-lg">
+         
+        
+
+
+    <!--input type="text" id="latitude" placeholder="latitude"-->
+    <!--input type="text" id="longitude" placeholder="longitude"-->
+  
+    <button type="submit" style="font-size: 2.5vw;" class="btn btn-primary btn-block">Submit</button>
+    <h6 style="font-size:1.7vw;">If the map shows an incorrect location, please re-enter your address and provide more details </h6>
+
+   
+    <div id="map" style="width:100%; height:55%"></div>
+    
+   <br>
+    <p style="font-size:2.3vw;"><strong>Average Daily DLI (mol/ m<sup>2</sup>):</strong></p>
+        <table style="float: left; width:33%">
+          <tr>
+            <td style="font-size:2.1vw;" ><strong>January</strong></td>
+            <td style="font-size:2.1vw;" id = "1"> 16.4 </td>
+          </tr> 
+  
+          <tr>
+            <td style="font-size:2.1vw;" ><strong>February</strong></td id = "1">
+            <td style="font-size:2.1vw;" id = "2">34.6</td>
+          </tr>
+          <tr>
+            <td style="font-size:2.1vw;"  ><strong>March</strong></td>
+            <td style="font-size:2.1vw;" id = "3">34.6</td>
+          </tr>
+          <tr>
+            <td style="font-size:2.1vw;" ><strong>April</strong></td>
+            <td style="font-size:2.1vw;" id = "4">34.6</td>
+          </tr>
+  </table>
+  <table style="float: left; width:33%">
+    <tr>
+      <td style="font-size:2.1vw;" ><strong>May</strong></td>
+      <td style="font-size:2.1vw;" id = "5">16.4</td>
+    </tr> 
+    <tr>
+      <td style="font-size:2.1vw;" ><strong>June</strong></td>
+      <td style="font-size:2.1vw;" id = "6">34.6</td>
+    </tr>
+    <tr>
+      <td style="font-size:2.1vw;" ><strong>July</strong></td>
+      <td style="font-size:2.1vw;" id = "7">16.4</td>
+    </tr> 
+
+    <tr>
+      <td style="font-size:2.1vw;" ><strong>August</strong></td>
+      <td style="font-size:2.1vw;" id = "8">34.6</td>
+    </tr>
+   
+  </table>
+
+  <table style="float: left; width:33%">
+
+    <tr>
+        <td style="font-size:2.1vw;"  ><strong>September</strong></td>
+        <td style="font-size:2.1vw;" id = "9">34.6</td>
+      </tr>
+    <tr>
+      <td style="font-size:2.1vw;" ><strong>October</strong></td>
+      <td style="font-size:2.1vw;" id = "10">16.4</td>
+    </tr> 
+
+    <tr>
+      <td style="font-size:2.1vw;" ><strong>November</strong></td>
+      <td style="font-size:2.1vw;" id = "11">34.6</td>
+    </tr>
+
+    <tr>
+      <td style="font-size:2.1vw;"  ><strong>December</strong></td>
+      <td style="font-size:2.1vw;" id = "12">34.6</td>
+    </tr>
+  </table>
+
+  </fieldset>
+  
+
+
+      <br>
+      <!--button type="submit" style="font-size: 2.5vw;" class="btn btn-primary btn-block">Submit</!--button-->
+     </form>
+    </div>
+</div>
+
+
+
+<script src="main.js"></script>
+
+
+</body>
+</html>
