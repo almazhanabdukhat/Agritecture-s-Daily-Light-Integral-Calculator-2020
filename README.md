@@ -9,3 +9,5 @@ The app was made for the Agritecture Consulting LLC.
 The updated DLI Calculator calcuales daily light integral not on daily basis, but rather outputs monthly average dli-s based on the location. The updated calculator is more user-friendly: only one input variable is collected from the user (location) to calculate the dli, opposed to 4 values (transmittance, location, day and month) in the previous version of the DLI Calculator.
 
 Moreover, to facilitate address search, map was integrated with the use of Google Map API - the marker shows the location entered by the user
+
+![Screenshot from game](https://github.com/almazhanabdukhat/Agritecture-s-Daily-Light-Integral-Calculator-2020/blob/master/Screen%20Shot%202020-05-08%20at%2017.04.55.png)
