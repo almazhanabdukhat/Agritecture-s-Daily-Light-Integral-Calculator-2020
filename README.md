@@ -10,4 +10,4 @@ The updated DLI Calculator calcuales daily light integral not on daily basis, bu
 
 Moreover, to facilitate address search, map was integrated with the use of Google Map API - the marker shows the location entered by the user
 
-![Screenshot from game](https://github.com/almazhanabdukhat/Agritecture-s-Daily-Light-Integral-Calculator-2020/blob/master/Screen%20Shot%202020-05-08%20at%2017.04.55.png)
+[![Watch the video](https://github.com/almazhanabdukhat/Agritecture-s-Daily-Light-Integral-Calculator-2020/blob/master/ezgif.com-video-to-gif%20(1).gif)]
